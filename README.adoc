@@ -57,8 +57,11 @@ TIP: [Rappel Git] Trois dépôts sont ici utilisés : le dépot Github de l'ense
 * Observer le code du projet `todolist-debut-ex1`
 
 *Le code est-il structuré en couches ? Quel problèmes ce code peut-il poser ?*
+Il y a une couche base de données et code métier donc oui le code est structuré en couches.
+Cependant il y a un problème de dépendance aux technos.
 
 *Où se trouve le code métier (voir la règle de gestion RG 1) ?*
+Le code métier est dans le fichier src/main/java/com/acmetodolist dans le TodoListController.
 
 *Cette règle est-elle facilement testable par un test unitaire ?*
 
