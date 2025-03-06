@@ -64,12 +64,24 @@ Cependant il y a un problème de dépendance aux technos.
 Le code métier est dans le fichier src/main/java/com/acmetodolist dans le TodoListController.
 
 *Cette règle est-elle facilement testable par un test unitaire ?*
+La règle est privée donc non elle n'est pas facilement testable il faut changer cela.
 
 * Lancer une base PostgreSQL en Docker dans un terminal (on lance ici la base en mode interactif pour visualiser son activité. Pour la lancer en tâche de fond, remplacer les options `it` par `d` comme 'daemon'):
 ```bash
 docker run -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 ```
 *Expliquer cette ligne de commande (y compris les options utilisées)*
+- docker run
+--> lance un contener pour postgres on l’initialise avec le mot de passe POSTGRES_PASSWORD=password
+
+- it
+-->lance le contener en mode interaction
+
+- e
+--> représente la variable d’environement pour le contener
+
+- p
+--> publie le contener
 
 * Compléter le code manquant dans la méthode `TodoListController.createTodoItem()`
 
