@@ -71,6 +71,7 @@ La règle est privée donc non elle n'est pas facilement testable il faut change
 docker run -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 ```
 *Expliquer cette ligne de commande (y compris les options utilisées)*
+
 - docker run
 --> lance un contener pour postgres on l’initialise avec le mot de passe POSTGRES_PASSWORD=password
 
@@ -83,9 +84,17 @@ docker run -it -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
 - p
 --> publie le contener
 
+- 5432:5432
+--> redirection de port
+
 * Compléter le code manquant dans la méthode `TodoListController.createTodoItem()`
 
+* Nous avons ajouté " this.todoItemRepository.save(todoItem)" à la méthode
+
 *Pourquoi `todoItemRepository` est-il `null` ? Quelle est la meilleure façon de l'injecter ?*
+Dans TodoListController, le constructeur n'a pas de paramètres donc Spring ne peut pas l'instancier.
+todoItemRepository n'est pas pris comme paramètre et n'est pas injecté donc reste null.
+On peut le faire de manière "automatique" avec @Inject (@autowired dans ce cas comme Spring)
 
 * Modifier le code en conséquence.
 

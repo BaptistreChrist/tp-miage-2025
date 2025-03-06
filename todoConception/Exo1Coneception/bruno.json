@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Exo1Coneception",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
