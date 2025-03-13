@@ -1,6 +1,7 @@
 package com.acme.todolist.adapters.persistence;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
@@ -12,21 +13,18 @@ import com.acme.todolist.application.port.out.UpdateTodoItem;
 import com.acme.todolist.domain.TodoItem;
 
 /**
- * Implémentation JPA des port out de persistence
- * 
- * @author bflorat
+ * Implémentation JPA des ports out de persistence
  *
+ * @author bflorat
  */
 @Component
-public class TodoItemPersistenceAdapter implements LoadTodoItem,UpdateTodoItem {
+public class TodoItemPersistenceAdapter implements LoadTodoItem, UpdateTodoItem {
 
-	private TodoItemRepository todoItemRepository;
-
-	private TodoItemMapper mapper;
+	private final TodoItemRepository todoItemRepository;
+	private final TodoItemMapper mapper;
 
 	@Inject
 	public TodoItemPersistenceAdapter(TodoItemRepository todoItemRepository, TodoItemMapper mapper) {
-		super();
 		this.todoItemRepository = todoItemRepository;
 		this.mapper = mapper;
 	}
@@ -34,9 +32,13 @@ public class TodoItemPersistenceAdapter implements LoadTodoItem,UpdateTodoItem {
 	@Override
 	public List<TodoItem> loadAllTodoItems() {
 		return this.todoItemRepository.findAll().stream()
-				.map(todoItemJpaEntory -> mapper.mapToTodoItem(todoItemJpaEntory)).collect(Collectors.toList());
+				.map(mapper::mapToTodoItem)
+				.collect(Collectors.toList());
 	}
 
-	// A compléter
-
+	@Override
+	public void storeNewTodoItem(TodoItem item) {
+		TodoItemJpaEntity entity = mapper.mapToTodoItemJpaEntity(item);
+		todoItemRepository.save(entity);
+	}
 }

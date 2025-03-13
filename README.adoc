@@ -153,7 +153,12 @@ _Temps estimé : 20 mins_
 
 * Implémenter (en junit) des TU portant sur la règle de gestion qui consiste à afficher `[LATE!]` dans la description d'un item en retard de plus de 24h.
 
-*Quels types de tests devra-t-on écrire pour les adaptateurs ?* 
+*Quels types de tests devra-t-on écrire pour les adaptateurs ?*
+
+Au minimum 2 tests devront être faits:
+- Un pour vérifier que un todo qui n'est pas en retard ne contient pas `[LATE!]`.
+
+- Un pour vérifier qu'un todo en retard contient `[LATE!]`.
 
 *S'il vous reste du temps, écrire quelques-uns de ces types de test.*
 
