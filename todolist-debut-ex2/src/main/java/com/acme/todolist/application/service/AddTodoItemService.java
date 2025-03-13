@@ -3,7 +3,7 @@ package com.acme.todolist.application.service;
 import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import com.acme.todolist.application.port.in.AddTodoItem;
@@ -31,8 +31,8 @@ public class AddTodoItemService implements AddTodoItem {
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> createTodoItem(@RequestBody TodoItem item) {
+	@ResponseStatus(HttpStatus.CREATED)
+	public void createTodoItem(@RequestBody TodoItem item) {
 		addTodoItem(item);
-		return ResponseEntity.status(201).build();
 	}
 }
